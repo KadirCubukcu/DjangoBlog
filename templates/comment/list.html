@@ -1,0 +1,9 @@
+{% load staticfiles %}
+<img class="seperator" src="{% static 'images/seperator.png'%}">
+</br></br>
+<legend>
+    <p><img src="{% static "images/Comment.png" %}">Comments</p>
+</legend>
+{% for comment in comments.values %}
+    {% include 'comment/list_tree.html' %}
+{% endfor %}

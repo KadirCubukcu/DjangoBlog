@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% comment %}
+{% for details in post.comment_set.all %}
+    <input type="radio" name="details" id="details{{ forloop.counter }}" value="{{ details.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ details.details}}</label><br />
+{% endfor %}
+{% endcomment %}
+
+
+{% load staticfiles %}
+{% block Header %}
+        <div class="left">
+            <fieldset>
+                <p class="left">Kadir Nuri Çubukçu</p>
+            </fieldset>
+        </div>
+        <div class="right">
+            <fieldset>
+                <a href="../"><p class="left">Home</p></a>
+                <a href="../Contact_Me"><p class="right">Contact Me</p></a>
+                <a href="../about_me"><p class="right">About Me</p></a>
+            </fieldset>
+        </div>
+{% endblock %}
+{% block Content %}
+        <div>
+            <legend>
+                <fieldset>
+                    <span id="post_title_img">
+                        <img src="{% static "images/post.png" %}">
+
+                    </span>
+                    <span id="post_title">
+                        <p>{{ post.title}}</p>
+                    </span>
+                    <span id="post_date_img">
+                        <img src="{% static "images/date.png" %}">
+                    </span>
+                    <span id="post_date">
+                        <p>{{ post.date }}</p>
+                    </span>
+                </fieldset>
+            </legend>
+                <div id="post_content">
+                    <p>{{ post.text }}</p>
+                </div>
+        </div>
+     <legend>
+            <p>Comments</p>
+     </legend>
+    {% for comments in comment %}
+        <div id="comment">
+            <legend>
+                <fieldset>
+                    <span id="post_title_img">
+                        <img src="{% static "images/Comment.png" %}">
+
+                    </span>
+                    <span id="post_title">
+                        <p>{{ comments.c_username}}</p></a>
+                    </span>
+                    <span id="post_date_img">
+                        <img src="{% static "images/date.png" %}">
+                    </span>
+                    <span id="post_date">
+                        <p>{{ comments.c_date }}</p>
+                    </span>
+                </fieldset>
+            </legend>
+                <div id="post_content">
+                    <p>{{ comments.c_text }}</p>
+                </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+{% block Sidebar %}
+{% endblock %}

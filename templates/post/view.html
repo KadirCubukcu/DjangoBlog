@@ -1,0 +1,50 @@
+{% extends 'layout_twocol.html' %}
+{% load i18n %}
+{% load comment_tree %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+    <div class='post'>
+        {% if post.status == 'DRAFT' %}
+            <div class='user-message'>
+                {% trans 'This post is shown only for you' %}
+            </div>
+        {% endif %}
+        {% if user.id == post.user_id %}
+            
+        {% endif %}
+        <legend>
+        <p>{{ post.title }}  </br> <small><small><small>{% trans "Author" %}: {{ post.user.get_full_name }}</small></small></small>
+        </p>
+           
+        </legend>
+        <div class='content'>
+            {{ post.content|safe|linebreaks }}
+        </div>
+        <div class='info'>
+            <div class='info'>
+                {% trans "Eklenme Tarihi" %}: {{ post.added_time|date:'d M Y' }} |
+                {% trans "Son Güncellenme Tarihi" %}: {{ post.last_modified_time|date:'d M Y' }}
+                <div class='user-message'><small>
+                <a href='{% url edit_post post.id %}'>
+                    {% trans 'Please, click to edit post' %}
+                </a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='comment-list'>
+        {% include 'comment/list.html' %}
+    </div>
+    {% if comment_form != None %}
+    <div class='comment-form'>
+        {{ comment_form }}
+    </div>
+    {% endif %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

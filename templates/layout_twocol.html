@@ -1,0 +1,124 @@
+{% load staticfiles %}
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>{% block title %}Blog{% endblock %}</title>
+    <link rel='stylesheet' href='{% static 'css/style.css' %}' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+    <div>
+        <header id="Header">
+        <div id='cssmenu'>
+            <ul>
+                <li>
+                    {% if user.is_authenticated %}
+                    <a href='{% url profile user.username %}'>
+                        <span>{{ user.get_full_name }}</span>
+                    </a>
+                    {% else %}
+                    <a href='{% url index %}'>
+                        <span>Blog</span>
+                    </a>
+                    {% endif %}
+                </li>
+                <li>
+                    <a href='{% url index %}'>
+                        <span>Home</span>
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class='has-sub'>
+                    <a href='{% url profile user.username %}'>
+                        <span>Settings</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href='{% url profile_edit %}'>
+                                <span>Edit Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href='{% url user_posts user.username %}'>
+                                <span>Posts</span>
+                            </a>
+                        </li>
+                        <li class='last'>
+                            <a href='{% url password_change %}'>
+                                <span>Password</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% else %}
+                <li>
+                    <a href='{% url login %}'>
+                        <span>Login</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li class='last'>
+                    <a href='{% url logout %}'>
+                        <span>Log Out</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class='last'>
+                    <a href='{% url signup %}'>
+                        <span>Sign Up</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!--<div class="left">
+            <fieldset class="navbar">
+                {% if user.is_authenticated %}
+                    <a href="{% url profile user.username %}" class="left">{{ user.get_full_name }}</a>
+                {% else %}
+                    <a href="{% url index %}" class="left">Blog </a>
+                {% endif %}
+            </fieldset>
+        </div>
+        <div class="right">
+            <fieldset>
+                <div class="menu left">
+                    <a href='{% url index %}'>Home</a>
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="menu left">
+                        <a href='{% url profile user.username %}'>Settings</a>
+                    </div>
+                    <div class="menu left">
+                        <a href='{% url logout %}'>Logout</a>  
+                    </div>
+                {% else %}
+                    <div class="menu left">
+                        <a href='{% url login %}'>Login</a>  
+                    </div>
+                    <div class="menu left">
+                        <a href='{% url signup %}'>Sign Up</a>  
+                    </div>
+                {% endif %}
+            </fieldset>
+        </div>-->
+        </header><!-- Header End -->
+        <div id="content-main">
+            <div id="sidebar" >
+            {% block Sidebar %}
+            {% if user.is_authenticated %}
+                <a href='{% url profile user.username %}'>My Profile</a></br>
+                <a href='{% url create_post %}'>Create Post</a></br>
+            {% else %}
+            {% endif %}
+            {% endblock %}
+            </div>
+            <div id="page" ><!-- Posts begin-->
+            {% block content %}
+                        It's content
+            {% endblock %}
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

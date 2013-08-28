@@ -1,0 +1,36 @@
+{% extends 'layout_twocol.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% block title %}{% trans 'Post List' %}{% endblock %}
+{% block content %}
+     {% for post in post_list %}
+        <div>
+            <legend>
+                <fieldset>
+                    <span id="post_title_img">
+                        <img src="{% static 'images/post.png' %}">
+                    </span>
+                    <span id="post_title">
+                        <a href='{% url post post.slug post.id%}'>{{ post.title }}</a>
+                    </span>
+                    <span id="post_date_img">
+                        <img src="{% static 'images/date.png'%}">
+                    </span>
+                    <span id="post_date">
+                        <p>{% trans "Eklenme Tarihi" %}: {{ post.added_time|date:'d M Y'}}</p>
+                    </span>
+                </fieldset>
+            </legend>
+                <div id="post_content">
+                    <p>{{ post.summary|safe|linebreaks }}<a href='{% url post post.slug post.id%}'>Devamı için...</a></p>
+                </div>
+                <div>
+                    <p style="text-align:right; font-size:11px;">Posted by {{ post.posted_by }} </br>{% trans "Last update" %}: {{ post.last_modified_time|date:'d M Y' }}</p>
+                <div>
+                </br></br>
+                    <img class="seperator" src="{% static 'images/seperator.png'%}">
+                </br></br></br>
+
+        </div>
+     {% endfor %}
+{% endblock %}
