@@ -3,7 +3,8 @@
         onclick="this.appendChild(document.getElementById('comment-form'));
                 document.getElementById('id_parent_comment').value='{{ comment.id }}'">
     <b>{{ comment.comment }}</b>
-    <small> by {{ comment.commented_by }}</small>
+    </br></br>
+    <p class="right"> by {{ comment.commented_by }}</p>
     {% if comment.children|length > 0 %}
             <li style="list-style-type: none;" class='has-child'>
             {% for children in comment.children.values %}

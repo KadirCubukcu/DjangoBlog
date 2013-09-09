@@ -68,7 +68,7 @@ class SignupForm(forms.ModelForm):
         user.save()
         profile = Profile()
         profile.user_id = user.id
-        profile.is_verified = False
+        profile.is_verified = True
         profile.birthdate = None
         profile.save()
         return profile

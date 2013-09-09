@@ -1,7 +1,9 @@
 {% extends 'layout_twocol.html' %}
 {% load i18n %}
 {% block title %}Signup - Blog{% endblock %}
-{% block content %}
+{% block content %}{% load staticfiles %}
+<script src="{% static 'js/validate_email.js' %}"></script>
+<script src="{% static 'js/validate.js' %}"></script>
     <h2>{% trans 'Signup Form' %}</h2>
     <form action='' method='POST'>
         {% csrf_token %}
@@ -20,11 +22,25 @@
             </tr>
             {% endfor %}
             <tr>
+            <tr>
+                <td>
+                    <label for="passwordStrength">Password strength</label>
+                </td>
+                <td>    
+                    <div id="passwordDescription"><small><small><b>Password not entered</b></small></small></div>
+                    <div id="passwordStrength" class="strength0"></div>
+                </td>
+                <td>
+                    <p id="passwordsame"></p>
+                </td>
+            </tr>
+        </br>
                 <td>&nbsp</td>
                 <td>
                     <input type='submit' value='{% if form_type == 'EDIT_FORM' %} Update {% else %}Signup{% endif %}' />
                 </td>
             </tr>
         </table>
+        <h5>Advices for More Strong Password: <h6 id="pass_advice">Least 6 characters, Has lower and uppercase characters, At least one number, At least one special character, Password length greater than 12</h6></h5>
     </form>
 {% endblock %}

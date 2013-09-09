@@ -12,21 +12,23 @@
         {% if user.id == post.user_id %}
             
         {% endif %}
-        <legend>
-        <p>{{ post.title }}  </br> <small><small><small>{% trans "Author" %}: {{ post.user.get_full_name }}</small></small></small>
+       
+        <p>
+            <h2>{{ post.title }} </h2>
+            <small>{% trans "Author" %}: {{ post.user.get_full_name }}</small>
         </p>
            
-        </legend>
+        
         <div class='content'>
-            {{ post.content|safe|linebreaks }}
+            <p>{{ post.content|safe|linebreaks }}</p>
         </div>
         <div class='info'>
             <div class='info'>
-                {% trans "Eklenme Tarihi" %}: {{ post.added_time|date:'d M Y' }} |
-                {% trans "Son Güncellenme Tarihi" %}: {{ post.last_modified_time|date:'d M Y' }}
+                <p>{% trans "Eklenme Tarihi" %}: {{ post.added_time|date:'d M Y' }} |
+                {% trans "Son Güncellenme Tarihi" %}: {{ post.last_modified_time|date:'d M Y' }}</p>
                 <div class='user-message'><small>
                 <a href='{% url edit_post post.id %}'>
-                    {% trans 'Please, click to edit post' %}
+                    <p>{% trans 'Please, click to edit post' %}</p>
                 </a></small>
                 </div>
             </div>

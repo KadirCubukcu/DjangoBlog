@@ -1,7 +1,8 @@
 {% extends 'layout_twocol.html' %}
 {% load i18n %}
 {% block title %}{%  trans 'Edit Profile' %}{% endblock %}
-{% block content %}
+{% block content %}{% load staticfiles %}
+<script src="{% static 'js/validate_email.js' %}"></script>
     <h2>{% trans 'Edit Form' %}</h2>
     <form action='' method='POST'>
         {% csrf_token %}
@@ -22,7 +23,7 @@
             <tr>
                 <td>&nbsp</td>
                 <td>
-                    <input type='submit' value='{% if form_type == 'EDIT_FORM' %} Update {% else %}Signup{% endif %}' />
+                    <input type='submit' value='{% if form_type == 'EDIT_FORM' %} Update {% else %}Update{% endif %}' />
                 </td>
             </tr>
         </table>

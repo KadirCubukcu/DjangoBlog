@@ -1,7 +1,8 @@
-{% load staticfiles %}
+{% load staticfiles %}{% load i18n %}
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>{% block title %}Blog{% endblock %}</title>
+    <link rel='stylesheet' href='{% static 'css/dclock.css' %}' />
     <link rel='stylesheet' href='{% static 'css/style.css' %}' />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <body>
@@ -26,6 +27,11 @@
                     </a>
                 </li>
                 {% if user.is_authenticated %}
+                <li>
+                    <a href='{% url create_post %}'>
+                        <span>Create Post</span>
+                    </a>
+                </li>
                 <li class='has-sub'>
                     <a href='{% url profile user.username %}'>
                         <span>Settings</span>
@@ -70,46 +76,34 @@
                 {% endif %}
             </ul>
         </div>
-        <!--<div class="left">
-            <fieldset class="navbar">
-                {% if user.is_authenticated %}
-                    <a href="{% url profile user.username %}" class="left">{{ user.get_full_name }}</a>
-                {% else %}
-                    <a href="{% url index %}" class="left">Blog </a>
-                {% endif %}
-            </fieldset>
-        </div>
-        <div class="right">
-            <fieldset>
-                <div class="menu left">
-                    <a href='{% url index %}'>Home</a>
-                </div>
-                {% if user.is_authenticated %}
-                    <div class="menu left">
-                        <a href='{% url profile user.username %}'>Settings</a>
-                    </div>
-                    <div class="menu left">
-                        <a href='{% url logout %}'>Logout</a>  
-                    </div>
-                {% else %}
-                    <div class="menu left">
-                        <a href='{% url login %}'>Login</a>  
-                    </div>
-                    <div class="menu left">
-                        <a href='{% url signup %}'>Sign Up</a>  
-                    </div>
-                {% endif %}
-            </fieldset>
-        </div>-->
         </header><!-- Header End -->
         <div id="content-main">
             <div id="sidebar" >
             {% block Sidebar %}
-            {% if user.is_authenticated %}
+            <!--{% if user.is_authenticated %}
                 <a href='{% url profile user.username %}'>My Profile</a></br>
                 <a href='{% url create_post %}'>Create Post</a></br>
             {% else %}
-            {% endif %}
+            {% endif %}-->
+            
+            <div id="clock" class="light">
+                <div class="display">
+                    <div class="weekdays"></div>
+                    <div class="ampm"></div>
+                    <div class="alarm"></div>
+                    <div class="digits"></div>
+                </div>
+            </div>
+            <!--{% for post in post_list %}
+            <div>
+                    <span id="post_title" style="text-align:right;">
+                        <h5><a href='{% url post post.slug post.id%}'>{{ post.title }}</a> <p style="text-align:right; font-size:11px;">Posted by {{ post.posted_by }} {% trans "Last update" %}: {{ post.last_modified_time|date:'d M Y' }}</p></h5>
+                    </span>
+            </div>
+            {% endfor %}-->
+            <script src="{% static 'js/jquery.min.js' %}"></script>
+            <script src="{% static 'js/moment.min.js' %}"></script>
+            <script src="{% static 'js/clock.js' %}"></script>
             {% endblock %}
             </div>
             <div id="page" ><!-- Posts begin-->
@@ -118,7 +112,7 @@
             {% endblock %}
             </div>
             
-        </div>
+        </div></br>
     </div>
 </body>
 </html>

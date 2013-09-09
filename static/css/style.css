@@ -13,45 +13,31 @@ a{
     color: #34495e;
     
 }
-header{
-    background-color:#3498db;
-    left: 0px;
-    top: 0px;
-    margin: 0px 0px 0px 0px;
-    display: block;
-    width: 100%;
-    height: 64px;
-    padding: 0;
-    margin-bottom: 20px;
-    font-family: Ubuntu;
-    font-size: 21px;
-    line-height: 40px;
-    color: #333333;
-    border: 0;
-    border-bottom: 1px solid #bbbbbb;
+
+li b{
+    cursor: pointer;
+    -webkit-appearance: pointer; 
 }
-#content-main{
-    width: 100%;
-    height: 100%;
-}
+
 div#page{
     float: left;
-    min-width       : 40%;
-    max-width       : 50%;
-	height          : 100%;
-	text-align      : left;
-	margin-top      : 0%;
-    margin-left     : 10%;
+    min-width : 40%;
+    max-width : 50%;
+    height: 100%;
+    text-align: left;
+    margin-top: 0%;
+    margin-left: 10%;
     border: 0;
-    border-right: 1px solid #bbbbbb;
-    padding-right   : 50px;
-	}
+    padding-right: 50px;
+    padding-top: 20px; 
+    }
+
 
 div#sidebar{
-    float           : right;
-	width           : 30%;
-	height          : 100%;
-    
+    float: right;
+    width: 30%;
+    height : 100%;
+    padding-top: 20px;
 
 }
 
@@ -61,7 +47,7 @@ span#post_date{
     font-size: 11px;
     width: 200px;
     height: 62px;
-    padding-top: 6px;
+    padding-top: 18px;
 }
 span#post_date_img{
     float: right;
@@ -69,15 +55,14 @@ span#post_date_img{
     font-size: 11px;
     width: 50px;
     height: 62px;
-    padding-top: 6px;
+    padding-top: 8px;
 }
 span#post_title{
     float: left;
     text-align : left;
     font-size: 18px;
     width: 300px;
-    height: 62px;
-    padding-top: 15px; 
+    height: 62px; 
 }
 span#post_title_img{
     float: left;
@@ -87,8 +72,6 @@ span#post_title_img{
     height: 62px;
     padding-top: 10px;
 }
-
-
 legend {
   display: block;
   width: 100%;
@@ -103,6 +86,79 @@ legend {
 
 fieldset {
   border: 0;
+}
+
+input,
+textarea,
+select{
+    border: 1px solid #cccccc;
+    border:none;
+    min-width: 250px;
+}
+
+input:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+input[type="text"],
+input[type="password"] {
+    cursor: text;
+    -webkit-appearance: text;
+    width: 100%;
+    padding-left:5px; 
+
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+    width: 150px;
+    height: 35px;
+    background-color: #3498db;
+    color:white;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    -webkit-appearance: button;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -ms-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    background-color: #2ecc71;
+}
+textarea,
+select{
+    border: 1px solid #cccccc;
+
+    width: 100%;
+}
+
+select:focus,
+textarea:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+
+.error,
+.error:focus{
+    border-color: red;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(211, 84, 0,0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(211, 84, 0,0.6);
+}
+.success:focus,
+.success{
+    border-color: #2ecc71;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(46, 204, 113,1.0);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(46, 204, 113,1.0);
 }
 
 .left{
@@ -171,6 +227,7 @@ fieldset {
     -ms-transition: all 0.35s ease-in-out;
     transition: all 0.35s ease-in-out;
     background-color: #2ecc71;
+    color:#16a085;
 }
 #cssmenu > ul > li > a > span {
     line-height: 18px;
@@ -181,7 +238,8 @@ fieldset {
     -moz-transition: all 0.35s ease-in-out;
     -ms-transition: all 0.35s ease-in-out;
     transition: all 0.35s ease-in-out;
-    background-color:#3498db;
+    background-color:#16a085;
+    color:white;
 }
 #cssmenu > ul ul {
     opacity: 0;
@@ -236,4 +294,113 @@ fieldset {
 #cssmenu > ul ul li a:active {
     border-left: 4px solid #3498db;
     background-color:#3498db;
+}
+
+#passwordStrength{
+        height:10px;
+        display:block;
+        float:left;
+}
+
+.strength0{
+    width:250px;
+    background:#c0392b;
+}
+
+.strength1{
+    width:50px;
+    background:#e74c3c;
+}
+
+.strength2{
+    width:100px;    
+    background:#e67e22;
+}
+
+.strength3{
+    width:150px;
+    background:#f1c40f;
+}
+
+.strength4{
+    background:#2ecc71;
+    width:200px;
+}
+
+.strength5{
+    background:#27ae60;
+    width:250px;
+}
+
+.pass_error{
+    color:#c0392b;
+}
+
+.pass_success{
+    color:#27ae60;
+}
+
+
+
+/*
+li[class="main-child"]{
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    list-style-type: none;
+    margin-top: 50px;
+    border:solid 1px;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    border-radius: 4px;
+}
+
+li[class="main-child"]:hover{
+    border-color: #66afe9; 
+}*/
+
+li.main-child 
+{
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    list-style-type: none;
+    margin-top: 50px;
+    position: relative;
+    background: #ecf0f1;
+    border: #66afe9 solid 8px;
+
+}
+
+li.main-child:after 
+{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 71.5%;
+    border-style: solid;
+    border-width: 15px 15px 0;
+    border-color: #ecf0f1 transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+li.main-child:before 
+{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 70%;
+    border-style: solid;
+    border-width: 22px 22px 0;
+    border-color: #66afe9 transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+}
+select,input,textarea{
+    border: none;
+    background:#E1E5E8;
 }
